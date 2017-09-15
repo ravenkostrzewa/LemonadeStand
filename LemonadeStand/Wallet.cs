@@ -13,6 +13,6 @@ namespace LemonadeStand
         public double todaysSales;
         public double weekToDateSales;
         public double newCurrentBalance;
-        public double cents;
+        public double dollars;
     }
 }

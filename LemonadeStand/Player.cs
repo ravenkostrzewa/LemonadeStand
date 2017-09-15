@@ -17,9 +17,10 @@ namespace LemonadeStand
         public double totalSugarPacketCost;
         public double iceCost = .05;
         public double totalIceCost;
-        public double glassCost = 15;
+        public double glassCost = .15;
         public double totalGlassCost;
         public double currentLemonadePrice;
+        public string name;
 
         //int currentLemonadePrice;
         public double currentRecipeSales;
@@ -41,11 +42,11 @@ namespace LemonadeStand
         //List<Glass> glass = new List<Glass>();
 
 
-        ///money is in cents
+        //money is in dollars 0.00
 
 
 
-        //Console.WriteLine("Only enter integars and a decimal point if needed, no letters or symbols.");
+        //Console.WriteLine("Only enter integars and a decimal point, no letters or symbols.");
         public virtual void shoppingList()
         {
             int number = 0;
@@ -89,6 +90,9 @@ namespace LemonadeStand
                     suppliesCost = (lemonCost + sugarPacketCost + iceCost + glassCost);
                 }
             }
+        }public virtual void completeTransaction()
+        {
+            newCurrentBalance = (newCurrentBalance - suppliesCost);
         }
         public void sellLemonade()
         {
@@ -146,12 +150,12 @@ namespace LemonadeStand
                 if (todaysSales > suppliesCost)
                 {
                     todaysProfit = (todaysSales - suppliesCost);
-                    Console.WriteLine("You made " + todaysProfit + " cents in profit today. You now have " + newCurrentBalance + "cents.");
+                    Console.WriteLine("You made " + todaysProfit + " dollars in profit today. You now have " + newCurrentBalance + "dollars.");
                 }
                 else if (todaysSales < suppliesCost)
                 {
                     todaysLoss = (suppliesCost - todaysSales);
-                    Console.WriteLine("You lost " + todaysLoss + "cents today.");
+                    Console.WriteLine("You lost " + todaysLoss + "dollars today.");
                 }
                 else
                 {
@@ -160,10 +164,6 @@ namespace LemonadeStand
 
             }
         }
-
-        public virtual void completeTransaction()
-        {
-            newCurrentBalance = (newCurrentBalance - suppliesCost);
-        }
     }
-}}
+}
+

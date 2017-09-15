@@ -20,7 +20,7 @@ namespace LemonadeStand
         int lemons;
         int sugar;
         int ice;
-        public double cents;
+        public double dollars;
         public double lemonCost = .30;
         public double totalLemonCost;
         public double sugarPacketCost = .05;
@@ -31,7 +31,7 @@ namespace LemonadeStand
         public double totalGlassCost;
 
 
-        ///money is in cents
+        ///money is in dollar
 
         public virtual void shoppingList()
         {
@@ -101,7 +101,7 @@ namespace LemonadeStand
                     }
                     catch { }
                 }
-                Console.WriteLine("In cents, how much would you like to charge per glass?");
+                Console.WriteLine("In dollars, how much would you like to charge per glass?");
                 try
                 {
                     currentLemonadePrice = Int32.Parse(Console.ReadLine());

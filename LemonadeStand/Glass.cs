@@ -10,6 +10,3 @@ namespace LemonadeStand
     {
     }
 }
-//glasses = (glasses - //glasses of lemonade available for sale);
-
-//
