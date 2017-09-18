@@ -20,12 +20,12 @@ namespace LemonadeStand
         {
             Console.WriteLine("Let's play Lemonade Stand! You have $30 to invest in your first day's ingredients and to purchase cups. With regard to the temperature and humidity, mix up the best-selling batches of lemonade and earn as much money as you can in one week. You will have the opportunity to purchase more supplies each morning in preparation for the day of sales. Each glass of lemonade must include lemon, sugar, and ice, but the quantities of each are up to your discretion. Good luck!");
             Console.WriteLine("Enter 1 to play by yourself or the total number of players if you will be playing with friends");
-            number = Int32.Parse(Console.ReadLine());
-            for (x <= userInput)
+           int  number = Int32.Parse(Console.ReadLine());
+            for (int x = 0; x <= number; x++)
             {
                 Console.WriteLine("What is your name?");
                 string userInput = Console.ReadLine();
-                players[i] = userInput;
+               // players[i] = userInput;
             }
 
             //    PlayerOne.name = userInput;
@@ -58,7 +58,7 @@ namespace LemonadeStand
             //        //loop
             //    }
             }
-        }
+        
 
         public void RunGame()
         {
@@ -74,13 +74,15 @@ namespace LemonadeStand
             int day = currentDay.potentialCustomers;
             // day = (currentDay.potentialCustomers = 0; currentDay.potentialCustomers <= 100; currentDay.potentialCustomers++);
             Weather weather = new Weather();
+            int i = 0;
+            int j = 0;
 
             players[i].shoppingList();
             players[i].completeTransaction();
             players[i].sellLemonade();
             currentDay.customer[j].BuyLemonade(weather);
             // currentDay.customer[0].buyLemonade(Weather weather);
-            currentDay.customer[j].interestedInLemonade();
+            bool foo = currentDay.customer[j].interestedInLemonade;
             players[i].sales();
 
 
