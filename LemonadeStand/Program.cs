@@ -12,14 +12,9 @@ namespace LemonadeStand
 
         static void Main(string[] args)
         {
-            //Game game = new Game();
-            //game.setUpPlayers();
-            //game.RunGame();
-            Weather weather = new Weather();
-
-            weather.GetTemperature();
-            weather.forecast();
-            Console.ReadKey();
+            Game game = new Game();
+            game.setUpPlayers();
+            game.RunGame();
         }
     }
 }

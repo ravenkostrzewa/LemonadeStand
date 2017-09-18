@@ -35,8 +35,6 @@ namespace LemonadeStand
             }
         }
 
-
-
         public void BuyLemonade(Weather weather)
         {
             if (weather.temperature <= 50)

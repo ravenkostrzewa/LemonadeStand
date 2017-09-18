@@ -8,19 +8,19 @@ namespace LemonadeStand
 {
     class Store
     {
-        double currentLemonadePrice;
-        double currentRecipeSales;
-        int currentRecipesSold;
-        int lemonadeMix;
+        public double currentLemonadePrice;
+        public double currentRecipeSales;
+        public int currentRecipesSold;
+        public int lemonadeMix;
         double weekToDateProfit;
         double suppliesCost;
         double todaysSales;
         double weekToDateSales;
         double newCurrentBalance;
-        int lemons;
-        int sugar;
-        int ice;
-        public double dollars;
+        public int lemons;
+        public int sugar;
+        public int ice;
+        public double dollars = 30;
         public double lemonCost = .30;
         public double totalLemonCost;
         public double sugarPacketCost = .05;
@@ -31,83 +31,90 @@ namespace LemonadeStand
         public double totalGlassCost;
 
 
-        ///money is in dollar
+        ///money is in dollars
 
-        public virtual void shoppingList()
+        public virtual void buyLemons(Player player)
         {
             int number = 0;
-            Console.WriteLine("How many lemons would you like to buy?");
+            Console.WriteLine(player.name + ", how many lemons would you like to buy?");
             try
             {
                 number = Int32.Parse(Console.ReadLine());
-                double totalLemonCost = (lemonCost) * (number);
+                double totalLemonCost = ((lemonCost) * (number));
+                newCurrentBalance = (dollars - totalLemonCost);
+                dollars = newCurrentBalance;
+                Console.WriteLine("You now have $" + newCurrentBalance);
             }
             catch
             {
-                Console.WriteLine("Only enter integars, no letters or symbols.");
-                shoppingList();
-            }
-            Console.WriteLine("How many packets of sugar would you like to buy?");
-            try
-            {
-                number = Int32.Parse(Console.ReadLine());
-                double totalSugarPacketsCost = (sugarPacketCost) * (number);
-            }
-            catch
-            {
-                Console.WriteLine("How many ice cubes would you like to buy?");
-                shoppingList();
-            }
-            try
-            {
-                number = Int32.Parse(Console.ReadLine());
-                double totalIceCost = (iceCost) * (number);
-            }
-            catch
-            {
-                Console.WriteLine("How many glasses would you like to buy?");
-                try
-                {
-                    number = Int32.Parse(Console.ReadLine());
-                    double totalGlassesCost = (glassCost) * (number);
-                }
-                catch
-                {
-
-                    suppliesCost = (lemonCost + sugarPacketCost + iceCost + glassCost);
-                }
+                Console.WriteLine(player.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point if necessary, not letters or symbols.");
+                buyLemons(player);
             }
         }
-        public void sellLemonade()
+
+        public virtual void buySugar(Player player)
         {
-            Console.WriteLine("How many lemons would you like to use?");
+            int number = 0;
+            Console.WriteLine(player.name + ", how many packets of sugar would you like to buy?");
             try
             {
-                lemons = Int32.Parse(Console.ReadLine());
+                number = Int32.Parse(Console.ReadLine());
+                double totalSugarPacketsCost = ((sugarPacketCost) * (number));
+                newCurrentBalance = (dollars - totalSugarPacketsCost);
+                dollars = newCurrentBalance;
+                Console.WriteLine("You now have $" + newCurrentBalance);
             }
             catch
             {
-                Console.WriteLine("How many sugar packets would you like to use?");
-                try
-                {
-                    sugar = Int32.Parse(Console.ReadLine());
-                }
-                catch
-                {
-                    Console.WriteLine("How many ice cubes would you like to use?");
-                    try
-                    {
-                        ice = Int32.Parse(Console.ReadLine());
-                    }
-                    catch { }
-                }
-                Console.WriteLine("In dollars, how much would you like to charge per glass?");
-                try
-                {
-                    currentLemonadePrice = Int32.Parse(Console.ReadLine());
-                }
-                catch { }
+                Console.WriteLine(player.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point if necessary, not letters or symbols.");
+                buySugar(player);
             }
+        }
+
+        public virtual void buyIce(Player player)
+        {
+            int number = 0;
+            Console.WriteLine(player.name + ", how many ice cubes would you like to buy?");
+            try
+            {
+                number = Int32.Parse(Console.ReadLine());
+                double totalIceCost = ((iceCost) * (number));
+                newCurrentBalance = (dollars - totalIceCost);
+                dollars = newCurrentBalance;
+                Console.WriteLine("You now have $" + newCurrentBalance);
+            }
+            catch
+            {
+                Console.WriteLine(player.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point if necessary, not letters or symbols.");
+                buyIce(player);
+            }
+        }
+
+        public virtual void buyGlasses(Player player)
+        {
+            int number = 0;
+            Console.WriteLine(player.name + ", how many glasses would you like to buy?");
+            try
+            {
+                number = Int32.Parse(Console.ReadLine());
+                double totalGlassesCost = ((glassCost) * (number));
+                newCurrentBalance = (newCurrentBalance - totalGlassesCost);
+                dollars = newCurrentBalance;
+                Console.WriteLine("You now have $" + newCurrentBalance);
+            }
+            catch
+            {
+                Console.WriteLine(player.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point if necessary, not letters or symbols.");
+                buyGlasses(player);
+            }
+            suppliesCost = (lemonCost + sugarPacketCost + iceCost + glassCost);
+        }
+
+        public void completeTransaction(Player player)
+        {
+            newCurrentBalance = (dollars - suppliesCost);
+            dollars = newCurrentBalance;
+            Console.WriteLine("You have $" + newCurrentBalance + " remaining.");
         }
     }
 }

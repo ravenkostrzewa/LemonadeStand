@@ -16,35 +16,28 @@ namespace LemonadeStand
         public int buyAnotherGlass;
         public int todaysSales;
 
-        public List<Customer> customer = new List<Customer>();
 
-        public void CheckOutCustomerForPurchase()
-        {
-          todaysSales =  (((currentLemonadePrice) * (buyLemonade)) + ((currentLemonadePrice) * (buyAnotherGlass)) + todaysSales);
-        }
-        public void CreateCustomers()
-        {
-
-        }
-
-
-
-        //daily forecast (temperature and precipitation);
-        //weekly forecast (temperature and precipitation);
+        //daily forecast (temperature and precipitation) and actual weather (temperature may change, percipitation remains true to prediction) are the same for all players
 
         public void Forecast(Weather weather)
         {
 
 
-            for (int i = 0; i <= 7; i++) {
-                //predict for entire week
-                //predict for current day from z value
-                //predict precipitation forecast for the entire week
-                //prediction holds true for each day
-                //show prediction for temperature and precipitation for current day and the remainder of the week
-            }
         }
     }
 }
+
+        //public List<Customer> customer = new List<Customer>();
+
+        //public void CheckOutCustomerForPurchase()
+        //{
+        //  todaysSales =  (((currentLemonadePrice) * (buyLemonade)) + ((currentLemonadePrice) * (buyAnotherGlass)) + todaysSales);
+        //    Console.WriteLine("You have $" + todaysSales + " in sales today.");
+        //}
+        //public void CreateCustomers()
+        //{
+
+        //}
+
 
 
