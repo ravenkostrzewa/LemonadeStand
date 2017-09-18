@@ -9,13 +9,13 @@ namespace LemonadeStand
     class Customer
     {
         public double glassesBought;
-        public bool precipitation;
-        public int temperature;
+        public Weather weather = new Weather();
+       
         public double dollars;
-        public double pricePerGlass;
         public double lemonsPerGlass;
         public double sugarPerGlass;
         public double icePerGlass;
+        public double currentLemonadePrice;
         int dailyPotentialCustomers;
         public bool buyLemonade;
         public bool interestedInLemonade;
@@ -37,7 +37,7 @@ namespace LemonadeStand
 
         public void BuyLemonade(Weather weather)
         {
-            if (weather.temperature <= 50)
+            if (weather.actualTemperature <= 60)
             {
                 if (rnd.Next(1, 100) <= 50)
                 {
@@ -48,7 +48,7 @@ namespace LemonadeStand
                     interestedInLemonade = false;
                 }
             }
-            else if (weather.temperature >= 51 && weather.temperature <= 60)
+            else if (weather.actualTemperature >= 61 && weather.temperature <= 70)
             {
                 if (rnd.Next(1, 100) <= 70)
                 {
@@ -59,21 +59,21 @@ namespace LemonadeStand
                     interestedInLemonade = false;
                 }
             }
-            else if (weather.temperature >= 61 && weather.temperature <= 70)
+            else if (weather.actualTemperature >= 71 && weather.actualTemperature <= 77)
             {
                 if (rnd.Next(1, 100) <= 70)
                 {
                     interestedInLemonade = true;
                 }
             }
-            else if (weather.temperature >= 71 && weather.temperature <= 80)
+            else if (weather.actualTemperature >= 78 && weather.actualTemperature <= 84)
             {
                 if (rnd.Next(1, 100) <= 80)
                 {
                     interestedInLemonade = true;
                 }
             }
-            else if (weather.temperature >= 81)
+            else if (weather.actualTemperature >= 85)
             {
                 if (rnd.Next(1, 100) <= 50)
                 {
@@ -87,7 +87,7 @@ namespace LemonadeStand
         }
 
         public void lemonadeSales(bool interestedInLemonade) {
-            if (interestedInLemonade = true && lemonsPerGlass >= 2 && lemonsPerGlass <= 5 && pricePerGlass <= 1.75)
+            if (interestedInLemonade = true && lemonsPerGlass >= 2 && lemonsPerGlass <= 5 && currentLemonadePrice <= 1.75)
             {
                 if (rnd.Next(1, 100) <= 80)
                 {
@@ -105,7 +105,7 @@ namespace LemonadeStand
                 {
                     buyLemonade = false;
                 }
-                else if (interestedInLemonade = true && sugarPerGlass >= 1 && sugarPerGlass <= 5 && pricePerGlass <= 1.75 && precipitation == false)
+                else if (interestedInLemonade = true && sugarPerGlass >= 1 && sugarPerGlass <= 5 && currentLemonadePrice <= 1.75 && weather.precipitation == false) ;
                 {
                     if (rnd.Next(1, 100) <= 85)
                     {
@@ -123,7 +123,7 @@ namespace LemonadeStand
                     {
                         buyLemonade = false;
                     }
-                    else if (interestedInLemonade = true && icePerGlass >= 6 && icePerGlass <= 11 && pricePerGlass <= 1.75 && precipitation == false)
+                    else if (interestedInLemonade = true && icePerGlass >= 6 && icePerGlass <= 11 && currentLemonadePrice <= 1.75 && weather.precipitation == false) ;
                     {
                         if (rnd.Next(1, 100) <= 90)
                         {
@@ -141,7 +141,7 @@ namespace LemonadeStand
                         {
                             buyLemonade = false;
                         }
-                        else if (interestedInLemonade = true && icePerGlass >= 6 && icePerGlass <= 11 && temperature >= 81)
+                        else if (interestedInLemonade = true && icePerGlass >= 6 && icePerGlass <= 11 && weather.actualTemperature >= 81);
                         {
                             if (rnd.Next(1, 100) <= 90)
                             {
@@ -159,7 +159,7 @@ namespace LemonadeStand
                             {
                                 buyLemonade = false;
                             }
-                            else if (interestedInLemonade == true && pricePerGlass <= 1.00)
+                            else if (interestedInLemonade == true && currentLemonadePrice <= 1.00)
                             {
                                 if (rnd.Next(1, 100) <= 90)
                                 {
