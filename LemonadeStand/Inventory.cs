@@ -13,7 +13,7 @@ namespace LemonadeStand
         List<Ice> ice = new List<Ice>();
         List<Glass> glass = new List<Glass>();
 
-        public virtual void getIngredients(players)
+        public void getIngredients()
         {
             for (int i = 0; i < 1000000000; i++)
             {

@@ -36,19 +36,28 @@ namespace LemonadeStand
             {
                 Day day = new Day();
                 Weather weather = new Weather();
-                lemonadeDay(day);
+                Player player = new Player();
+                Customer customer = new Customer();
+                lemonadeDay(players[i]);
                 weather.GetTemperature();
                 weather.forecast();
-                //shopping
+                //SHOPPING
                 Console.WriteLine("It is " + weather.actualTemperature + " degrees fahrenheit today.");
-                Console.WriteLine("It is " + weather.precipitationForecast + " today");
-
+                Console.WriteLine("It is " + weather.precipitationForecast + " today.");
+                player.addLemons();
+                player.addSugar();
+                player.addIce();
+                player.costOfLemonade();
+                customer.MakeCustomers();
+                customer.BuyLemonade();
+                customer.lemonadeSales();
+                player.sales();
             }
         }
-        public void lemonadeDay(Day currentDay)
+        //move this?lemonadeDay to Day?
+        public void lemonadeDay()
         {
             int day = currentDay.potentialCustomers;
-            // day = (currentDay.potentialCustomers = 0; currentDay.potentialCustomers <= 100; currentDay.potentialCustomers++);
             Weather weather = new Weather();
             int i = 0;
             int j = 0;
@@ -61,10 +70,13 @@ namespace LemonadeStand
                 store.buyIce(players[i]);
                 store.buyGlass(players[i]);
                 inventory.getIngredients(players[i]);
-                players[i].makeLemonade(players[i]);
-                //currentDay.customer[j].BuyLemonade(weather);
-                // currentDay.customer[0].buyLemonade(Weather weather);
-                //bool check = currentDay.customer[j].interestedInLemonade;
+                players[i].addLemons(players[i]);
+                players[i].addSugar(players[i]);
+                players[i].addIce(players[i]);
+                players[i].costOfLemonade(players[i]);
+                currentDay.customer[j].buyLemonade(weather);
+                currentDay.customer[0].buyLemonade(players[i]);
+                bool check = currentDay.customer[j].interestedInLemonade;
                 players[i].sales();
             }
         }

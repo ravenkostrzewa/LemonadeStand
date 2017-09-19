@@ -36,75 +36,84 @@ namespace LemonadeStand
         public double useSugar;
         public double useIce;
 
-        public void makeLemonade(Player player)
+        public void addLemons(Player players)
         {
             if (glasses < 1 || lemons == 0 || sugar == 0 || ice == 0)
             {
                 Console.WriteLine("You don't have the supplies necessary to be open for business! Your Glass Supply: " + glasses + "Your Lemon Supply: " + lemons + "Your Sugar Packet Supply: " + sugar + "Your Ice Cube Supply: " + ice);
-                //end day
+                sales();
             }
-            else
+            else if (glasses >= 1 && lemons > 0 && sugar > 0 && ice == 0)
             {
-                Console.WriteLine("Let's make lemonade! You have " + glasses + " glasses, " + lemons + " lemons, " + sugar + " sugar packets, " + " and " + ice + " ice cubes. " + player.name + ", how many lemons would you like to use?");
+                Console.WriteLine("Let's make lemonade! You have " + glasses + " glasses, " + lemons + " lemons, " + sugar + " sugar packets, " + " and " + ice + " ice cubes. " + players.name + ", how many lemons would you like to use?");
                 try
                 {
                     useLemons = Int32.Parse(Console.ReadLine());
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(player.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point with up to two decimal places if necessary. Do not use letters or symbols.");
+                    Console.WriteLine(players.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point with up to two decimal places if necessary. Do not use letters or symbols.");
+                    addLemons(players);
                 }
-                if (lemons <= useLemons)
-                {
-                    Console.WriteLine("You don't have enough lemons for that recipe! Your Lemon Supply: " + lemons);
-                    //loop back to Console.WriteLine(how many lemons?)
-                }
-                else
-                {
-                    Console.WriteLine("Let's make lemonade! You have " + glasses + " glasses, " + lemons + " lemons, " + sugar + " sugar packets, " + " and " + ice + " ice cubes. " + player.name + ", how many sugar packets would you like to use?");
-                    try
-                    {
-                        useSugar = Int32.Parse(Console.ReadLine());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(player.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point with up to two decimal places if necessary. Do not use letters or symbols.");
-                    }
-                    if (sugar <= useSugar)
-                    {
-                        Console.WriteLine("You don't have enough sugar packets for that recipe! Your Sugar Packet Supply: " + sugar);
-                        //loop back to Console.WriteLine(how much sugar?)
-                    }
-                    else
-                    {
-                        Console.WriteLine("Let's make lemonade! You have " + glasses + " glasses, " + lemons + " lemons, " + sugar + " sugar packets, " + " and " + ice + " ice cubes. " + player.name + ", how many ice cubes would you like to use?");
-                        try
-                        {
-                            useIce = Int32.Parse(Console.ReadLine());
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(player.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point with up to two decimal places if necessary. Do not use letters or symbols.");
-                        }
-                        if (ice <= useIce)
-                        {
-                            Console.WriteLine("You don't have enough ice cubes for that recipe! Your Ice Cube Supply: " + ice);
-                        }
-                        //loop back to Console.WriteLine(how much ice?)
-                        else
-                        {
-                            Console.WriteLine(player.name + ", in dollars, how much would you like to charge per glass? ie. 1.25, 1, .60, 2.50, et cetera...");
-                            try
-                            {
-                                currentLemonadePrice = Int32.Parse(Console.ReadLine());
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine(player.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point with up to two decimal places if necessary. Do not use letters or symbols.");
-                            }
-                        }
-                    }
-                }
+            }
+        }
+
+
+        public void addSugar(Player players)
+        {
+            Console.WriteLine("Let's make lemonade! You have " + glasses + " glasses, " + lemons + " lemons, " + sugar + " sugar packets, " + " and " + ice + " ice cubes. " + players.name + ", how many sugar packets would you like to use?");
+            try
+            {
+                useSugar = Int32.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(players.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point with up to two decimal places if necessary. Do not use letters or symbols.");
+                addSugar(players);
+            }
+            if (sugar <= useSugar)
+            {
+                Console.WriteLine("You don't have enough sugar packets for that recipe! Your Sugar Packet Supply: " + sugar);
+                addSugar(players);
+            }
+            else
+            {
+            
+            }
+        }
+
+        public void addIce(Player players)
+        {
+            Console.WriteLine("Let's make lemonade! You have " + glasses + " glasses, " + lemons + " lemons, " + sugar + " sugar packets, " + " and " + ice + " ice cubes. " + players.name + ", how many ice cubes would you like to use?");
+            try
+            {
+                useIce = Int32.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(players.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point with up to two decimal places if necessary. Do not use letters or symbols.");
+                addIce(players);
+            }
+            if (ice <= useIce)
+            {
+                Console.WriteLine("You don't have enough ice cubes for that recipe! Your Ice Cube Supply: " + ice);
+                addIce(players);
+            }
+            else
+            {
+
+            }
+      }
+      public void costOfLemonade(Player players)
+      {
+            Console.WriteLine(players.name + ", in dollars, how much would you like to charge per glass? ie. 1.25, 1, .60, 2.50, et cetera...");
+            try
+            {
+                currentLemonadePrice = Int32.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(players.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point with up to two decimal places if necessary. Do not use letters or symbols.");
             }
         }
                            
