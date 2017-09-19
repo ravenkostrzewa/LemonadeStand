@@ -41,10 +41,11 @@ namespace LemonadeStand
 
         public void RunGame()
         {
-            int days = 0;
+            int days = 1;
             int i;
-            while (days < 7)
+            while (days <= 7)
             {
+                Console.WriteLine("Today is day " + days +" of your seven-day lemonade stand gig!");
                 Day day = new Day();
                 Inventory inventory = new Inventory();
                 Weather weather = new Weather();
