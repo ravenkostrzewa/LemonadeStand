@@ -10,13 +10,12 @@ namespace LemonadeStand
     {
         public double glassesBought;
         public Weather weather = new Weather();
-       
         public double dollars;
         public double lemonsPerGlass;
         public double sugarPerGlass;
         public double icePerGlass;
         public double currentLemonadePrice;
-        int dailyPotentialCustomers;
+        public int dailyPotentialCustomers;
         public bool buyLemonade;
         public bool interestedInLemonade;
         public bool buyAnotherGlass;

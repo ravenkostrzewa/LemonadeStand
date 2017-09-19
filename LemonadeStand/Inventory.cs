@@ -8,33 +8,39 @@ namespace LemonadeStand
 {
     public class Inventory
     {
-        List<Lemon> lemon = new List<Lemon>();
-        List<Sugar> sugar = new List<Sugar>();
-        List<Ice> ice = new List<Ice>();
-        List<Glass> glass = new List<Glass>();
+        public List<Lemon> lemons;
+        public List<Sugar> sugar;
+       public  List<Ice> ice;
+       public  List<Glass> glass;
+
+        public Inventory()
+        {
+             lemons = new List<Lemon>();
+             sugar = new List<Sugar>();
+             ice = new List<Ice>();
+            glass = new List<Glass>();
+        }
 
         public void getIngredients()
         {
-            for (int i = 0; i < 1000000000; i++)
+            for (int i = 0; i <= 10000; i++)
             {
-                lemon.Add(new Lemon());
+                lemons.Add(new Lemon());
             }
 
-            for (int i = 0; i < 1000000000; i++)
+            for (int i = 0; i <= 10000; i++)
             {
                 sugar.Add(new Sugar());
             }
 
-            for (int i = 0; i < 1000000000; i++)
+            for (int i = 0; i <= 10000; i++)
             {
                 ice.Add(new Ice());
             }
-            for (int i = 0; i < 1000000000; i++)
+            for (int i = 0; i <= 10000; i++)
             {
                 glass.Add(new Glass());
             }
         }
-
-
     }
 }

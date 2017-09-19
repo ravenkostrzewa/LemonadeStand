@@ -30,10 +30,7 @@ namespace LemonadeStand
         public double totalIceCost;
         public double glassCost = .10;
         public double totalGlassCost;
-        public Player player = new Player(); 
-
-
-        ///money is in dollars
+        public Player player = new Player();
 
         public virtual void buyLemons(Player player)
         {
@@ -49,14 +46,16 @@ namespace LemonadeStand
             catch
             {
                 Console.WriteLine(player.name + ", your entry is invalid. Your answer should consist of numbers and a decimal point if necessary, not letters or symbols.");
-                buyLemons(player);
+
             }
             if (dollars >= totalLemonCost)
             {
+            {
                 dollars = (dollars - totalLemonCost);
-                lemons = number + lemons;
+                player.ofInventory.lemons.Add(new Lemon());
                 newCurrentBalance = dollars;
-                Console.WriteLine("You have purchased " + number + " lemons. You have " + lemons + " lemons in your inventory. You now have $" + newCurrentBalance + ".");
+                Console.WriteLine("You have purchased " + number + " lemons. You have " + player.ofInventory.lemons.Count + " lemons in your inventory. You now have $" + newCurrentBalance + ".");
+            }
             }
             else if (dollars <= .70)
             {
@@ -88,14 +87,16 @@ namespace LemonadeStand
             }
             if (dollars >= totalSugarCost)
             {
-                dollars = (dollars - totalSugarCost);
-                sugar = number + sugar;
-                newCurrentBalance = dollars;
-                Console.WriteLine("You have purchased " + number + " sugar packets. You have " + sugar + " sugar packets in your inventory. You now have $" + newCurrentBalance + ".");
+                {
+                    dollars = (dollars - totalLemonCost);
+                    player.ofInventory.sugar.Add(new Sugar());
+                    newCurrentBalance = dollars;
+                    Console.WriteLine("You have purchased " + number + " sugar packets. You have " + player.ofInventory.sugar.Count + " sugar packets in your inventory. You now have $" + newCurrentBalance + ".");
+                }
             }
             else if (dollars <= .05)
             {
-                player.makeLemonade(player);
+                player.costOfLemonade();
             }
             else
             {
@@ -123,14 +124,16 @@ namespace LemonadeStand
             }
             if (dollars >= totalIceCost)
             {
-                dollars = (dollars - totalIceCost);
-                ice = number + ice;
-                newCurrentBalance = dollars;
-                Console.WriteLine("You have purchased " + number + " ice cubes. You have " + ice + " ice cubes in your inventory. You now have $" + newCurrentBalance + ".");
+                {
+                    dollars = (dollars - totalLemonCost);
+                    player.ofInventory.ice.Add(new Ice());
+                    newCurrentBalance = dollars;
+                    Console.WriteLine("You have purchased " + number + " ice cubes. You have " + player.ofInventory.ice.Count + " ice cubes in your inventory. You now have $" + newCurrentBalance + ".");
+                }
             }
             else if (dollars <= .05)
             {
-                player.makeLemonade(player);
+                player.addLemons();
             }
             else
             {
@@ -158,14 +161,16 @@ namespace LemonadeStand
             }
             if (dollars >= totalGlassCost)
             {
-                dollars = (dollars - totalGlassCost);
-                glasses = number + glasses;
-                newCurrentBalance = dollars;
-                Console.WriteLine("You have purchased " + number + " glasses. You have " + glasses + " glasses in your inventory. You now have $" + newCurrentBalance + ".");
+                {
+                    dollars = (dollars - totalGlassCost);
+                    player.ofInventory.glass.Add(new Glass());
+                    newCurrentBalance = dollars;
+                    Console.WriteLine("You have purchased " + number + " glasses. You have " + player.ofInventory.glass.Count + " glasses in your inventory. You now have $" + newCurrentBalance + ".");
+                }
             }
             else if (dollars <= .10)
             {
-                player.makeLemonade(player);
+                player.costOfLemonade();
             }
             else
             {

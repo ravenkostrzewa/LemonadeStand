@@ -17,7 +17,7 @@ namespace LemonadeStand
         List<Weather> weather = new List<Weather>();
         public int forecastPossibility;
 
-//predict weather prior to shopping, add actual weather method after shopping
+//predict temperature and forecast prior to shopping, show actual temperature (within range of predicted temperature) and forecast (same as predicted) method after buying supplies each morning
 
         public void GetTemperature()
         {
@@ -28,7 +28,7 @@ namespace LemonadeStand
                     temperature = rnd.Next(45, 58);
                     actualTemperature = rnd.Next(49, 56);
                 }
-                Console.WriteLine("The weatherman predicts that it will be " + temperature + " degrees fahrenheit");
+                Console.WriteLine("Temperature: The weatherman predicts that it will be " + temperature + " degrees fahrenheit today.");
             }
             else if (temperatureRange >= 2 && temperatureRange <= 10)
             {
@@ -36,7 +36,7 @@ namespace LemonadeStand
                     temperature = rnd.Next(59, 79);
                     actualTemperature = rnd.Next(64, 74);
                 }
-                Console.WriteLine("The weatherman predicts that it will be " + temperature + " degrees fahrenheit");
+                Console.WriteLine("Temperature: The weatherman predicts that it will be " + temperature + " degrees fahrenheit today.");
             }
             else
             {
@@ -44,7 +44,7 @@ namespace LemonadeStand
                     temperature = rnd.Next(80, 94);
                     actualTemperature = rnd.Next(84, 89);
                 }
-                Console.WriteLine("The weatherman predicts that it will be " + temperature + " degrees fahrenheit");
+                Console.WriteLine("Temperature: the weatherman predicts that it will be " + temperature + " degrees fahrenheit today.");
             }
         }
 
@@ -58,17 +58,17 @@ namespace LemonadeStand
                 if (forecastPossibility == 1)
                 {
                     precipitationForecast = "hail";
-                    Console.WriteLine("The weatherman predicts " + precipitationForecast + " today.");
+                    Console.WriteLine("Weather: The weatherman predicts that there will be " + precipitationForecast + " today.");
                 }
                 else if (forecastPossibility >= 2 && forecastPossibility <= 15)
                 {
                     precipitationForecast = "light rain";
-                    Console.WriteLine("The weatherman predicts " + precipitationForecast + " today.");
+                    Console.WriteLine("Weather: The weatherman predicts that there wil be " + precipitationForecast + " today.");
                 }
                 else
                 {
-                    precipitationForecast = "a thunderstorm";
-                    Console.WriteLine("The weatherman predicts " + precipitationForecast + " today.");
+                    precipitationForecast = "thunderstorm";
+                    Console.WriteLine("Weather: The weatherman predicts that there will be a " + precipitationForecast + " today.");
                 }
             }
             else
@@ -77,18 +77,18 @@ namespace LemonadeStand
                 forecastPossibility = rnd.Next(1, 6);
                 if (forecastPossibility == 1 || forecastPossibility == 2)
                 {
-                    precipitationForecast = "a clear sky";
-                    Console.WriteLine("The weather man predicts " + precipitationForecast + " today.");
+                    precipitationForecast = "clear skes";
+                    Console.WriteLine("Weather: The weather man predicts that there will be " + precipitationForecast + " today.");
                 }
                 else if (forecastPossibility == 3 || forecastPossibility == 4)
                 {
-                    precipitationForecast = "a cloudy sky";
-                    Console.WriteLine("The weatherman predicts " + precipitationForecast + " today.");
+                    precipitationForecast = "cloudy skies";
+                    Console.WriteLine("Weather: The weatherman predicts " + precipitationForecast + " today.");
                 }
                 else if (forecastPossibility == 5 || forecastPossibility == 6)
                 {
-                    precipitationForecast = "a full sun";
-                    Console.WriteLine("The weatherman predicts " + precipitationForecast + " today.");
+                    precipitationForecast = "sunny";
+                    Console.WriteLine("Weather: The weatherman predicts that today will be a very " + precipitationForecast + ".");
                 }
 
             }
